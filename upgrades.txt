@@ -1,0 +1,12 @@
+For multiple playlists, we would make the playlist_id no longer a foreign key referencing the user_id,
+but rather there would be a new column titled user_id that isn't unique.  When creating a new playlist,
+the playlist table will create a new item for that playlist with the next available playlist_id and fills
+in the columns with necessary information.  If a playlist is updated, then the table is updated accordingly
+(remove is simple, add creates a new item with proper ids and rank, rank update replaces rank numbers)
+
+For account types, the user table will be updated with a "type" column that has datatype TINYINT.
+0 - free
+1 - standard
+2 - premium
+etc.
+Probably also set a trigger so that there is a maximum value to this column (level 255 doesn't exist).
